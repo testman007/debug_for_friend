@@ -1,8 +1,7 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
-
+  # move (使用者登入的認證程序 before_action :authenticate_user!) to applicationController
   def index
-    
+    @restaurants = Restaurant.page(params[:page]).per(10)
+    @categories = Category.all
   end
-
 end
